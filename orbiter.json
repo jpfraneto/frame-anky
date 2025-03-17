@@ -1,0 +1,6 @@
+{
+  "domain": "anky",
+  "buildCommand": "pnpm run build",
+  "buildDir": "dist",
+  "siteId": "bfdd10d5-5052-40fe-9f0b-56eb5c29ec75"
+}
