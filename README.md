@@ -1,54 +1,47 @@
-# React + TypeScript + Vite
+# Anky - AI-Powered Flow Writing Companion
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Anky is an innovative writing system that combines flow state writing with AI companionship to help users unlock their creative potential.
 
-Currently, two official plugins are available:
+## Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🪶 Flow Writing
 
-## Expanding the ESLint configuration
+- Immersive stream-of-consciousness writing experience
+- Visual and audio feedback that responds to your writing flow
+- Automatically enters full-screen "Anky Mode" after 8 seconds of continuous writing
+- Progress tracking with visual indicators
+- Session stats including word count, WPM, and flow score
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 🧠 AI Companion
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- Chat with Anky, a mystical writing companion
+- Receive personalized prompts and insights
+- Conversation history saved locally
+- Contextual responses based on your writing patterns
+- Seamless chat interface with both compact and expanded modes
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 📈 Progress Tracking
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Build writing streaks
+- Unlock achievements
+- Earn rewards
+- Track metrics like:
+  - Words per minute
+  - Session duration
+  - Keystroke patterns
+  - Flow state scores
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Technical Stack
+
+- React + TypeScript
+- Vite for blazing fast development
+- Framer Motion for smooth animations
+- Tailwind CSS for styling
+- Environment-based API configuration
+- Farcaster integration for user authentication
+
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies with `npm install`
+3. Create `.env.development` and `.env.production` files with:
