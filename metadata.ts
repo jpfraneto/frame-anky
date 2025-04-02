@@ -24,16 +24,17 @@ async function writeMetadata(data: FrameEmbed) {
 
 const frameData: FrameEmbed = {
   version: "next",
-  imageUrl: "https://github.com/jpfraneto/images/blob/main/ankkky.png?raw=true",
+  imageUrl:
+    "https://github.com/jpfraneto/images/blob/main/fartwins.png?raw=true",
   button: {
-    title: "Just Write",
+    title: "Duplicate Yourself",
     action: {
       type: "launch_frame",
-      name: "Anky",
-      url: "https://anky.bot",
+      name: "FarTwins",
+      url: "https://fartwins.lat",
       splashImageUrl:
-        "https://github.com/jpfraneto/images/blob/main/splash222.png?raw=true",
-      splashBackgroundColor: "#e6ccff",
+        "https://github.com/jpfraneto/images/blob/main/substance222.png?raw=true",
+      splashBackgroundColor: "#68A3C1",
     },
   },
 };

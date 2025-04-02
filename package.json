@@ -1,5 +1,5 @@
 {
-  "name": "frame-anky",
+  "name": "frame-doppleganger",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@farcaster/frame-sdk": "^0.0.31",
+    "@farcaster/frame-wagmi-connector": "^0.0.20",
     "@tailwindcss/vite": "^4.0.12",
     "@tanstack/react-query": "^5.67.2",
+    "asciichart": "^1.5.25",
     "axios": "^1.8.3",
     "framer-motion": "^12.5.0",
     "react": "^19.0.0",

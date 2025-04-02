@@ -1,14 +1,14 @@
 import { createConfig, http, WagmiProvider } from "wagmi";
 import { base } from "wagmi/chains";
-import { frameConnector } from "../../lib/connector";
 import { useEffect } from "react";
+import { farcasterFrame as miniAppConnector } from "@farcaster/frame-wagmi-connector";
 
 export const config = createConfig({
   chains: [base],
   transports: {
     [base.id]: http(),
   },
-  connectors: [frameConnector()],
+  connectors: [miniAppConnector()],
 });
 
 console.log("Wagmi config created:", config);

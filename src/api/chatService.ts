@@ -86,6 +86,7 @@ export const chatService = {
       }
 
       // Add user message to local session immediately
+
       const userMessage: ChatHistoryItem = {
         id: Date.now(),
         text: message,

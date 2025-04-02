@@ -6,6 +6,11 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
-    allowedHosts: ["frame.anky.bot"],
+    allowedHosts: [
+      "frame.anky.bot",
+      "doppelganger.lat",
+      "doppelganger.orbiter.website",
+      "fartwins.lat",
+    ],
   },
 });

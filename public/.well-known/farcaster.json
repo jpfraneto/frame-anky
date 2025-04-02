@@ -1,18 +1,18 @@
 {
   "accountAssociation": {
     "header": "eyJmaWQiOjE2MDk4LCJ0eXBlIjoiY3VzdG9keSIsImtleSI6IjB4YUIyMERlOGY1QTRmOGUxNDdCYWFDOUQxZjZlMjM2ODYxNDg1NTE2QSJ9",
-    "payload": "eyJkb21haW4iOiJhbmt5LmJvdCJ9",
-    "signature": "MHhlNTRiYzhlM2FmN2MwNjM2N2EzZjRjNTdjZjBiNzhmMjc0NWVmYjE1ZjJhNzFkMGE0ZjVlMzQ1ODQxNjkyM2FiMzI4ZTllMjRmMDU2OTM0MzI5NDIzYTBjZTVmMTRmYzVmZmU2OGYxNzdjMzhiNmQ2MGNkMTI1MjJlMjExZTU2YTFj"
+    "payload": "eyJkb21haW4iOiJmYXJ0d2lucy5sYXQifQ",
+    "signature": "MHg0N2EzODMzMWI2Yjc5MzY0YjEzMmMxMzM4NzcyNGNhNzE2NzliM2YxMzVjMGUxNTgxNDliMmVkMzAxZWI1MmIxMTdlMjBlMGFlMTdiNzlmZjU4ZmQ0NGUyNGQ4NWMxYTkzZDdmNWE3YTlhYmM2NjFiYTZkODdiMDUzNjBjZGRjYzFi"
   },
   "frame": {
     "version": "1",
-    "name": "Anky",
-    "iconUrl": "https://github.com/jpfraneto/images/blob/main/splash222.png?raw=true",
-    "homeUrl": "https://anky.bot",
-    "imageUrl": "https://github.com/jpfraneto/images/blob/main/ankkky.png?raw=true",
-    "buttonTitle": "Just Write",
-    "splashImageUrl": "https://github.com/jpfraneto/images/blob/main/splash222.png?raw=true",
-    "splashBackgroundColor": "#e6ccff",
-    "webhookUrl": "https://farcaster.anky.bot/anky/webhook"
+    "name": "FarTwins",
+    "iconUrl": "https://github.com/jpfraneto/images/blob/main/substance222.png?raw=true",
+    "homeUrl": "https://fartwins.lat",
+    "imageUrl": "https://github.com/jpfraneto/images/blob/main/fartwins.png?raw=true",
+    "buttonTitle": "Meet my FarTwin",
+    "splashImageUrl": "https://github.com/jpfraneto/images/blob/main/substance222.png?raw=true",
+    "splashBackgroundColor": "#68A3C1",
+    "webhookUrl": "https://poiesis.anky.bot/doppleganger/webhook"
   }
 }

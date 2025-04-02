@@ -1,44 +1,61 @@
 import React, { useState } from "react";
-import { FaFeather, FaChartLine } from "react-icons/fa";
-import { RiMentalHealthFill } from "react-icons/ri";
+import { FaRobot } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+  BsChatDots,
+  BsCodeSlash,
+  BsFileText,
+  BsTranslate,
+} from "react-icons/bs";
 
 const Info: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
   isOpen,
   onClose,
 }) => {
-  const [currentScreen, setCurrentScreen] = useState(0);
+  const [capabilities, setCapabilities] = useState([
+    {
+      id: 1,
+      name: "Reply on farcaster",
+      description: "Every time it is tagged the agent will reply.",
+      icon: <BsChatDots className="text-2xl" />,
+      active: true,
+      color: "#8C52FF",
+    },
+    {
+      id: 2,
+      name: "Reply to DCs",
+      description: "Active on the warpcast direct messages.",
+      icon: <BsCodeSlash className="text-2xl" />,
+      active: true,
+      color: "#00C2FF",
+    },
+    {
+      id: 3,
+      name: "Content Writer",
+      description:
+        "Publish two pieces of content every day, at random moments.",
+      icon: <BsFileText className="text-2xl" />,
+      active: false,
+      color: "#FFA700",
+    },
+    {
+      id: 4,
+      name: "Notifications",
+      description: "Notifies you twice every day.",
+      icon: <BsTranslate className="text-2xl" />,
+      active: false,
+      color: "#FF5733",
+    },
+  ]);
 
   if (!isOpen) return null;
 
-  const screens = [
-    {
-      icon: <FaFeather className="text-[#8C52FF] text-3xl" />,
-      title: "Flow Writing",
-      description:
-        "Transform your stream-of-consciousness writing into a meditative experience with immersive visual and audio feedback.",
-    },
-    {
-      icon: <RiMentalHealthFill className="text-[#00C2FF] text-3xl" />,
-      title: "AI Companion",
-      description:
-        "Chat with Anky, your mystical writing companion that provides prompts and insights about your writing patterns.",
-    },
-    {
-      icon: <FaChartLine className="text-[#FFA700] text-3xl" />,
-      title: "Track & Earn",
-      description:
-        "Build writing streaks, unlock achievements, and earn rewards while training your capacity to enter a flow state.",
-    },
-  ];
-
-  const handleNext = () => {
-    if (currentScreen === screens.length - 1) {
-      onClose();
-      setCurrentScreen(0);
-    } else {
-      setCurrentScreen(currentScreen + 1);
-    }
+  const toggleCapability = (id: number) => {
+    setCapabilities(
+      capabilities.map((cap) =>
+        cap.id === id ? { ...cap, active: !cap.active } : cap
+      )
+    );
   };
 
   return (
@@ -54,47 +71,67 @@ const Info: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.9, opacity: 0 }}
           transition={{ type: "spring", damping: 20 }}
-          className="bg-gradient-to-b from-[#0F0718] to-[#1a0b2e] text-white p-8 rounded-xl max-w-xl relative cursor-pointer"
-          onClick={handleNext}
+          className="bg-gradient-to-b from-[#0F0718] to-[#1a0b2e] text-white p-6 rounded-xl w-full max-w-lg mx-4 relative"
         >
           <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onClose();
-            }}
+            onClick={onClose}
             className="absolute top-4 right-4 p-2 text-gray-400 hover:text-white transition-colors"
           >
             ✕
           </button>
 
-          <motion.div
-            key={currentScreen}
-            initial={{ x: 50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: -50, opacity: 0 }}
-            className="py-8"
-          >
-            <div className="flex flex-col items-center text-center gap-6">
-              {screens[currentScreen].icon}
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-[#8C52FF] to-[#00C2FF] text-transparent bg-clip-text">
-                {screens[currentScreen].title}
-              </h2>
-              <p className="text-gray-300 max-w-md">
-                {screens[currentScreen].description}
-              </p>
-            </div>
-          </motion.div>
+          <div className="flex items-center gap-3 mb-6">
+            <FaRobot className="text-2xl text-[#8C52FF]" />
+            <h2 className="text-xl font-bold">Agent Actions</h2>
+          </div>
 
-          <div className="flex justify-center gap-2 mt-8">
-            {screens.map((_, idx) => (
-              <div
-                key={idx}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  idx === currentScreen ? "bg-[#8C52FF]" : "bg-gray-600"
-                }`}
-              />
+          <div className="space-y-3">
+            {capabilities.map((capability) => (
+              <motion.div
+                key={capability.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="bg-black/30 p-3 rounded-lg flex items-center justify-between"
+              >
+                <div className="flex items-center gap-3">
+                  <div
+                    className="p-2 rounded-lg"
+                    style={{ backgroundColor: capability.color + "20" }}
+                  >
+                    {capability.icon}
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-sm">{capability.name}</h3>
+                    <p className="text-xs text-gray-400">
+                      {capability.description}
+                    </p>
+                  </div>
+                </div>
+                <label className="relative inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    className="sr-only peer"
+                    checked={capability.active}
+                    onChange={() => toggleCapability(capability.id)}
+                  />
+                  <div className="w-10 h-5 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#8C52FF]"></div>
+                </label>
+              </motion.div>
             ))}
           </div>
+
+          {/* <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="mt-5 w-full py-2.5 bg-gradient-to-r from-[#8C52FF] to-[#00C2FF] rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity text-sm"
+          >
+            <FaPlus size={12} />
+            <span onClick={() => setIsOpen(false)}>Add More Capabilities</span>
+          </motion.button> */}
+
+          {/* <p className="text-center text-xs text-gray-400 mt-3">
+            Browse the marketplace for more agent capabilities
+          </p> */}
         </motion.div>
       </motion.div>
     </AnimatePresence>

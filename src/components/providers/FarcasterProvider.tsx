@@ -80,13 +80,14 @@ export default function FarcasterProvider({
   const [frameContext, setFrameContext] = useState<FrameContext | null>(null);
   const [isFarcasterFrame, setIsFarcasterFrame] = useState(true);
 
+  // POST "${https://oriented-lively-anchovy.ngrok-free.app}/api/disparo"
   useEffect(() => {
     const initializeFarcaster = async () => {
       console.log("Starting Farcaster initialization...");
       try {
         // Initialize SDK
         console.log("Initializing SDK...");
-        sdk.actions.ready();
+
         console.log("SDK initialized successfully");
 
         // Get frame context

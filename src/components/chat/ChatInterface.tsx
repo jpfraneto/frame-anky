@@ -94,7 +94,7 @@ const ChatInterface: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col max-w-md h-[600px] mx-auto border border-gray-200 rounded-lg shadow-md bg-gray-50 overflow-hidden">
+    <div className="flex flex-col h-[calc(100vh-var(--keyboard-height,0px))] w-full border border-gray-200 rounded-lg shadow-md bg-gray-50 overflow-hidden">
       <div className="bg-blue-500 text-white p-4 text-center">
         <h2 className="text-lg font-semibold m-0">Chat Assistant</h2>
       </div>

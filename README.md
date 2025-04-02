@@ -1,44 +1,42 @@
-# Anky - AI-Powered Flow Writing Companion
+# Doppelganger - AI-Powered Personality Mirror
 
-Anky is an innovative writing system that combines flow state writing with AI companionship to help users unlock their creative potential.
+Doppelganger is an innovative system that analyzes your Farcaster profile and creates a personalized AI agent that mirrors your personality traits.
 
 ## Key Features
 
-### 🪶 Flow Writing
+### 🎭 Personality Analysis
 
-- Immersive stream-of-consciousness writing experience
-- Visual and audio feedback that responds to your writing flow
-- Automatically enters full-screen "Anky Mode" after 8 seconds of continuous writing
-- Progress tracking with visual indicators
-- Session stats including word count, WPM, and flow score
+- Dynamic profile analysis based on Farcaster data
+- Multi-step personality trait assessment
+- Interactive trait selection interface
+- Visual feedback during analysis process
+- Personalized agent creation
 
-### 🧠 AI Companion
+### 🌟 Visual Experience
 
-- Chat with Anky, a mystical writing companion
-- Receive personalized prompts and insights
-- Conversation history saved locally
-- Contextual responses based on your writing patterns
-- Seamless chat interface with both compact and expanded modes
+- Stunning pixel explosion animations
+- Progress indicators and loading states
+- Smooth transitions between steps
+- Responsive and interactive UI elements
+- Profile picture integration
 
-### 📈 Progress Tracking
+### 🤖 AI Agent Creation
 
-- Build writing streaks
-- Unlock achievements
-- Earn rewards
-- Track metrics like:
-  - Words per minute
-  - Session duration
-  - Keystroke patterns
-  - Flow state scores
+- Deploy personalized AI agents
+- Trait-based agent configuration
+- Integration with $a0x token
+- Frame notifications for deployment status
+- Seamless Web3 interactions
 
 ## Technical Stack
 
 - React + TypeScript
-- Vite for blazing fast development
-- Framer Motion for smooth animations
+- Vite for development
+- Framer Motion for animations
 - Tailwind CSS for styling
+- Axios for API requests
+- Farcaster Frame SDK integration
 - Environment-based API configuration
-- Farcaster integration for user authentication
 
 ## Getting Started
 
