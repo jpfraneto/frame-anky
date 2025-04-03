@@ -101,6 +101,25 @@ export default function FarcasterProvider({
           setFid(context.user.fid);
           setIsConnected(true);
           console.log("User connected successfully");
+          const accounts = await sdk.wallet.ethProvider.request({
+            method: "eth_requestAccounts",
+          });
+          if (accounts && accounts[0]) {
+            const chainId = await sdk.wallet.ethProvider.request({
+              method: "eth_chainId",
+            });
+            const chainIdDecimal =
+              typeof chainId === "number" ? chainId : parseInt(chainId, 16);
+
+            if (chainIdDecimal !== 8453) {
+              await sdk.wallet.ethProvider.request({
+                method: "wallet_switchEthereumChain",
+                params: [{ chainId: "0x2105" }], // Base mainnet chainId
+              });
+            }
+
+            return accounts[0];
+          }
         } else {
           console.log("No FID found, setting as non-Farcaster frame");
           setIsFarcasterFrame(false);

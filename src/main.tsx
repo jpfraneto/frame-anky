@@ -14,14 +14,13 @@ import sdk from "@farcaster/frame-sdk";
 import App from "./App";
 import { FrameContext } from "./components/providers/FarcasterProvider";
 import FarcasterProvider from "./components/providers/FarcasterProvider";
-import EthereumProvider from "./components/providers/EthereumProvider";
+import { WagmiProvider } from "wagmi";
 import Leaderboard from "./components/leaderboard";
 import Info from "./components/info";
 import A0XProvider from "./components/providers/A0XProvider";
 import InfoModal from "./components/info/InfoModal";
-import FartwinsLandingPage from "./components/FartwinsLandingPage";
 import axios from "axios";
-import FartwinConversationPage from "./components/FartwinConversationPage";
+import { config } from "./lib/wagmiConfig";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -83,8 +82,8 @@ function Root() {
   const [isSDKLoaded, setIsSDKLoaded] = useState(false);
   const [frameContext, setFrameContext] = useState<FrameContext | null>(null);
   const [displayInfoModal, setDisplayInfoModal] = useState(false);
-  const [userHasFartwin, setUserHasFartwin] = useState(false);
   const [fartwin, setFartwin] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [userCharacteristics, setUserCharacteristics] = useState<
     UserCharacteristics[]
   >([]);
@@ -130,7 +129,6 @@ function Root() {
 
         const hasFartwin =
           response.data.agents && response.data.agents.length > 0;
-        setUserHasFartwin(hasFartwin);
 
         if (hasFartwin) {
           const userAgents = response.data.agents;
@@ -148,9 +146,11 @@ function Root() {
             ),
             agentId: userAgents[0].agentId,
           });
+          setIsLoading(false);
         } else {
           setFartwin(null);
           setUserCharacteristics(response.data.characteristics);
+          setIsLoading(false);
         }
       }
     };
@@ -170,16 +170,13 @@ function Root() {
         <Route
           path="/"
           element={
-            !frameContext ? (
-              <FartwinsLandingPage />
-            ) : !userHasFartwin ? (
-              <App userCharacteristics={userCharacteristics} />
-            ) : (
-              <FartwinConversationPage
-                fartwin={fartwin}
-                isAgentDead={agentIsDead}
-              />
-            )
+            <App
+              userCharacteristics={userCharacteristics}
+              fartwin={fartwin}
+              isAgentDead={agentIsDead}
+              isLoading={isLoading}
+              setIsAgentDead={setAgentIsDead}
+            />
           }
         />
         <Route
@@ -191,74 +188,24 @@ function Root() {
           element={<Info isOpen={true} onClose={() => {}} />}
         />
       </Routes>
-      {/* <motion.div
-        onClick={() => {
-          sdk.actions.swap({
-            sellToken:
-              "eip155:8453/erc20:0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
-            buyToken:
-              "eip155:8453/erc20:0x820C5F0fB255a1D18fd0eBB0F1CCefbC4D546dA7",
-            sellAmount: "3000000",
-          });
-        }}
-        className="absolute cursor-pointer bottom-12 text-white text-center text-2xl relative bottom-3"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
-        whileHover={{
-          scale: 1.05,
-          textShadow: "0 0 12px rgba(255,255,255,0.8)",
-        }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <motion.span
-          initial={{ backgroundPosition: "0% 50%" }}
-          whileHover={{
-            backgroundPosition: "100% 50%",
-            transition: { duration: 0.8, ease: "easeInOut" },
-          }}
-          className="bg-gradient-to-r from-white via-purple-400 to-white bg-clip-text text-transparent bg-[length:200%]"
-        >
-          powered by{" "}
-        </motion.span>
-        <motion.span
-          className="font-bold cursor-pointer"
-          whileHover={{
-            scale: 1.1,
-            color: "#ffffff",
-            textShadow: "0 0 12px rgba(255,255,255,0.8)",
-          }}
-          initial={{ y: 0 }}
-          animate={{
-            y: [0, -4, 0],
-            transition: {
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            },
-          }}
-        >
-          /a0x
-        </motion.span>
-      </motion.div> */}
     </>
   );
 }
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <ErrorBoundary>
-        <BrowserRouter>
-          <A0XProvider>
-            <FarcasterProvider>
-              <EthereumProvider>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <ErrorBoundary>
+          <BrowserRouter>
+            <A0XProvider>
+              <FarcasterProvider>
                 <Root />
-              </EthereumProvider>
-            </FarcasterProvider>
-          </A0XProvider>
-        </BrowserRouter>
-      </ErrorBoundary>
-    </QueryClientProvider>
+              </FarcasterProvider>
+            </A0XProvider>
+          </BrowserRouter>
+        </ErrorBoundary>
+      </QueryClientProvider>
+    </WagmiProvider>
   </React.StrictMode>
 );
